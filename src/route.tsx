@@ -9,7 +9,7 @@ import AdminLayout from "./pages/admin/AdminLayout.tsx";
 import EditProductPage from "./pages/admin/EditProductPage.tsx";
 import NewProductPage from "./pages/admin/NewProductPage.tsx";
 import AdminProductListPage from "./pages/admin/ProductListPage.tsx";
-import ErrorPage from "./pages/Errorpage.tsx";
+import ErrorPage from "./pages/ErrorPage.tsx";
 
 const routes: RouteObject[] = [
   {

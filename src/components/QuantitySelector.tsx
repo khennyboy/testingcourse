@@ -2,6 +2,7 @@ import { Button, Flex, Text } from "@radix-ui/themes";
 import { useCart } from "../hooks/useCart";
 import type { Product } from "../entities";
 
+
 const QuantitySelector = ({ product }: { product: Product }) => {
   const { getItem, addToCart, removeFromCart } = useCart();
 
