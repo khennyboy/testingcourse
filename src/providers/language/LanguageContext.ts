@@ -8,8 +8,6 @@ type LanguageContextType = {
   getLabel: (labelId: string) => string;
 };
 
-const LanguageContext = createContext<LanguageContextType>(
-  {} as LanguageContextType
-);
+const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export default LanguageContext;

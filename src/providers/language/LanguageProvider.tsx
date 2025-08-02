@@ -16,7 +16,11 @@ export function LanguageProvider({ language, children }: Props) {
 
   const changeLanguage = (language: Language) => setCurrentLanguage(language);
 
-  const labelsDictionary: { [key: string]: { [key: string]: string } } = {
+  const labelsDictionary: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  } = {
     en,
     es,
   };

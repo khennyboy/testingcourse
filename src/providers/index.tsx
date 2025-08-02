@@ -7,6 +7,7 @@ import ReactQueryProvider from "./ReactQueryProvider";
 import { LanguageProvider } from "./language/LanguageProvider";
 
 const Providers = ({ children }: PropsWithChildren) => {
+  
   return (
     <AuthProvider>
       <ReactQueryProvider>

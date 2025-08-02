@@ -1,7 +1,6 @@
 import { Select } from "@radix-ui/themes";
 import useLanguage from "../hooks/useLanguage";
 import type { Language } from "../providers/language/type";
-// import { Language } from "../providers/language/type";
 
 const LanguageSelector = () => {
   const { currentLanguage, changeLanguage } = useLanguage();
