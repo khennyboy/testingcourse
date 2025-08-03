@@ -5,6 +5,7 @@ import { Product } from "../../src/entities";
 import { CartProvider } from "../../src/providers/CartProvider";
 import { describe, expect, it } from "vitest";
 
+
 describe("QuantitySelector", () => {
   const renderComponent = () => {
     const product: Product = {
@@ -82,7 +83,7 @@ describe("QuantitySelector", () => {
     expect(quantity).toHaveTextContent("1");
     expect(decrementButton).toBeInTheDocument();
     expect(incrementButton).toBeInTheDocument();
-    expect(getAddToCartButton()).not.toBeInTheDocument;
+    expect(getAddToCartButton()).not.toBeInTheDocument();
   });
 
   it("should increment the quantity", async () => {
