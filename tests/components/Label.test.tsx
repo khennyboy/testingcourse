@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react'
 import Label from '../../src/components/Label'
 import { LanguageProvider } from '../../src/providers/language/LanguageProvider'
 import { Language } from '../../src/providers/language/type'
+import React from 'react'; 
+import { describe, expect, it } from 'vitest';
 
 describe('Label', () => {
   const renderComponent = (labelId: string, language: Language) => {

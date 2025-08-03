@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import ExpandableText from '../../src/components/ExpandableText';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
+import React from 'react'; 
 
 describe('ExpandableText', () => {
   const limit = 255;

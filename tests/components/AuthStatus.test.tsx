@@ -3,6 +3,7 @@ import AuthStatus from "../../src/components/AuthStatus";
 import { mockAuthState } from "../utils";
 import { describe, expect } from "vitest";
 import { it } from "vitest";
+import React from 'react'; 
 
 describe("AuthStatus", () => {
   it("should render the loading message while fetching the auth status", () => {

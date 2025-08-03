@@ -8,7 +8,8 @@ import AllProviders from "../AllProviders";
 import { db } from "../mocks/db";
 import { Toaster } from "react-hot-toast";
 import { Category, Product } from "../../src/entities";
-import { describe } from "node:test";
+import React from 'react'; 
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
 describe("ProductForm", () => {
   let category: Category;

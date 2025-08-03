@@ -4,6 +4,8 @@ import ProductList from '../../src/components/ProductList';
 import AllProviders from '../AllProviders';
 import { db } from '../mocks/db';
 import { server } from '../mocks/server';
+import React from 'react'; 
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 describe('ProductList', () => {
   const productIds: number[] = [];

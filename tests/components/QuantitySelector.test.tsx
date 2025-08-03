@@ -4,7 +4,7 @@ import QuantitySelector from "../../src/components/QuantitySelector";
 import { Product } from "../../src/entities";
 import { CartProvider } from "../../src/providers/CartProvider";
 import { describe, expect, it } from "vitest";
-
+import React from 'react'; 
 
 describe("QuantitySelector", () => {
   const renderComponent = () => {

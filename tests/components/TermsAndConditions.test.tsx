@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import TermsAndConditions from "../../src/components/TermsAndConditions";
 import userEvent from "@testing-library/user-event";
+import React from 'react'; 
+import { describe, expect, it } from "vitest";
 
 describe("TermsAndConditions", () => {
   const renderComponent = () => {

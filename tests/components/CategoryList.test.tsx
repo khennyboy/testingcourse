@@ -9,6 +9,7 @@ import AllProviders from "../AllProviders";
 import { db } from "../mocks/db";
 import { simulateDelay, simulateError } from "../utils";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import React from 'react'; 
 
 describe("CategoryList", () => {
   const categories: Category[] = [];

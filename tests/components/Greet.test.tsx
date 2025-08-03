@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Greet from "../../src/components/Greet";
+import React from 'react'; 
+import { describe, expect, it } from 'vitest';
 
 describe("Greet", () => {
   it("should render Hello with the name when name is provided", () => {

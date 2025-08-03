@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 import ToastDemo from "../../src/components/ToastDemo";
 import { Toaster } from "react-hot-toast";
 import userEvent from "@testing-library/user-event";
+import React from 'react'; 
+import { describe, expect, it } from "vitest";
 
 describe("ToastDemo", () => {
   it('should render a toast', async () => {

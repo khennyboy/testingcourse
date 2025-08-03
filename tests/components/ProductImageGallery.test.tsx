@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import ProductImageGallery from '../../src/components/ProductImageGallery';
+import React from 'react'; 
+import { describe, expect, it } from 'vitest';
 
 describe('ProductImageGallery', () => {
   it('should render nothing if given an empty array', () => {

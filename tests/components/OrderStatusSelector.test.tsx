@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 import OrderStatusSelector from "../../src/components/OrderStatusSelector";
 import { Theme } from "@radix-ui/themes";
 import userEvent from "@testing-library/user-event";
+import React from 'react'; 
+import { describe, expect, it, vi } from 'vitest';
 
 describe("OrderStatusSelector", () => {
   const renderComponent = () => {

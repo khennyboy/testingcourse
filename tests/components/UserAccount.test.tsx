@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { User } from "../../src/entities";
 import UserAccount from "../../src/components/UserAccount";
 import { describe, expect, it } from "vitest";
+import React from 'react'; 
 
 describe(
     "UserAccount", () => {

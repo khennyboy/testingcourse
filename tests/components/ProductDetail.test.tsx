@@ -4,6 +4,8 @@ import { server } from '../mocks/server';
 import { http, HttpResponse, delay } from 'msw';
 import { db } from '../mocks/db';
 import AllProviders from '../AllProviders';
+import React from 'react'; 
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 describe('ProductDetail', () => {
   let productId: number; 
