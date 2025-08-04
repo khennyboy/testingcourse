@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import type { User } from "@auth0/auth0-spa-js"; 
+import type { User } from "@auth0/auth0-spa-js";
 import { HttpResponse, delay, http } from "msw";
 import { render } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
@@ -38,7 +38,7 @@ export const mockAuthState = async (authState: AuthState) => {
     loginWithPopup: vi.fn(),
     logout: vi.fn(),
     handleRedirectCallback: vi.fn(),
-    error: undefined
+    error: undefined,
   });
 };
 

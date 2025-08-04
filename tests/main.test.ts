@@ -1,5 +1,6 @@
 import { describe, it, expect, afterEach, beforeEach } from 'vitest';
 import { db } from './mocks/db';
+import React from 'react';
 
 describe('db.product', () => {
     // Clean up the database after each test to ensure test isolation.

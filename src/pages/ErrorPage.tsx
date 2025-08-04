@@ -12,7 +12,7 @@ const ErrorPage = () => {
           ? "The requested page was not found."
           : prod
           ? "An unexpected error occurred."
-          : (error as Error).message}
+          : (error as Error)?.message}
       </main>
     </div>
   );
