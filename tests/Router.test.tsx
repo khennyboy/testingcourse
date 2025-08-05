@@ -1,74 +1,65 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter, useRoutes } from "react-router-dom";
-import { describe, expect, it, vi } from "vitest";
-import routes from "../src/route";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it
+} from "vitest";
 import React from "react";
-
-function AppRoutes() {
-  const element = useRoutes(routes);
-  return element;
-}
-
-vi.mock("../src/hooks/useProduct", () => ({
-  __esModule: true,
-  default: (id: number) => ({
-    data: { name: "Test Product", price: 99.99 },
-    isLoading: false,
-    error: null,
-  }),
-}));
+import routes from "../src/route";
+import { db } from "./mocks/db";
+import { mockAuthState } from "./setup";
 
 describe("App routing", () => {
+  const renderRoute = (path: string) => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: [path],
+    });
+
+    render(<RouterProvider router={router} />);
+  };
+
+  beforeEach(() => {
+    mockAuthState({
+      isAuthenticated: true,
+      isLoading: false,
+      user: { name: "Mosh" },
+    });
+  });
+  afterEach(() => {
+    db.product.deleteMany({ where: {} });
+  });
+  
   it("renders the home page", () => {
-    render(
-      <MemoryRouter initialEntries={["/"]}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-    // screen.debug()
+    renderRoute("/");
     expect(screen.getByText(/home/i)).toBeInTheDocument();
   });
 
   it("renders the playground page", () => {
-    render(
-      <MemoryRouter initialEntries={["/playground"]}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
+    renderRoute("/playground");
     expect(screen.getByText(/playground/i)).toBeInTheDocument();
   });
 
-  it("renders the product detail page with mock data", () => {
-    render(
-      <MemoryRouter initialEntries={["/products/123"]}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
+  it("renders the product detail page with mock data", async () => {
+    const product = db.product.create();
+    renderRoute(`/products/${product.id}`);
 
+    // Wait for the product data to be loaded
     expect(
-      screen.getByRole("heading", { name: /test product/i })
+      await screen.findByRole("heading", { name: product.name })
     ).toBeInTheDocument();
-    expect(screen.getByText("$99.99")).toBeInTheDocument();
+    expect(screen.getByText(`$${product.price}`)).toBeInTheDocument();
   });
 
   it("renders the new admin product page", () => {
-    render(
-      <MemoryRouter initialEntries={["/admin/products/new"]}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
+    renderRoute("/admin/products/new");
     expect(screen.getByText(/new product/i)).toBeInTheDocument();
   });
 
   it("renders the 404 error page for unknown routes", () => {
-    render(
-      <MemoryRouter initialEntries={["/unknown-route"]}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-    screen.debug()
+    renderRoute("/not-found");
     expect(
       screen.getByText(/the requested page was not found/i)
     ).toBeInTheDocument();

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import type { Product } from "../entities";
-// import { Product } from "../entities";
 
 const ProductList = () => {
   const { data: products, error, isLoading } = useQuery<Product[], Error>({
@@ -11,7 +10,7 @@ const ProductList = () => {
 
   if (isLoading) return <div>Loading...</div>;
 
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div>Error: {error?.message}</div>;
 
   if (products!.length === 0) return <p>No products available.</p>;
 

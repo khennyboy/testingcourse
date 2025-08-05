@@ -1,25 +1,14 @@
-import "@testing-library/jest-dom";
-// import "@testing-library/jest-dom/vitest";
-import ResizeObserver from 'resize-observer-polyfill';
-import { server } from "./mocks/server";
-import { PropsWithChildren, ReactNode } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import type { User } from "@auth0/auth0-spa-js";
+import "@testing-library/jest-dom/vitest";
+import React from "react";
+import ResizeObserver from "resize-observer-polyfill";
 import { afterAll, afterEach, beforeAll, vi } from "vitest";
+import { server } from "./mocks/server";
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
-
-vi.mock('@auth0/auth0-react', () => {
-  return {
-    useAuth0: vi.fn().mockReturnValue({
-      isAuthenticated: false,
-      isLoading: false,
-      user: undefined
-    }),
-    Auth0Provider: ({ children }: PropsWithChildren) => children,
-    withAuthenticationRequired: (component: ReactNode) => component
-  }
-});
 
 global.ResizeObserver = ResizeObserver;
 
@@ -33,10 +22,36 @@ Object.defineProperty(window, "matchMedia", {
     matches: false,
     media: query,
     onchange: null,
-    addListener: vi.fn(), // deprecated
-    removeListener: vi.fn(), // deprecated
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   })),
 });
+
+vi.mock("@auth0/auth0-react", () => ({
+  useAuth0: vi.fn(),
+  Auth0Provider: ({ children }: { children: React.ReactNode }) => children,
+  withAuthenticationRequired: (component: React.ReactNode) => component,
+}));
+
+type AuthState = {
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  user: User | undefined;
+};
+
+export const mockAuthState = (authState: AuthState) => {
+  vi.mocked(useAuth0).mockReturnValue({
+    ...authState,
+    getAccessTokenSilently: vi.fn().mockResolvedValue("a"),
+    getAccessTokenWithPopup: vi.fn(),
+    getIdTokenClaims: vi.fn(),
+    loginWithRedirect: vi.fn(),
+    loginWithPopup: vi.fn(),
+    logout: vi.fn(),
+    handleRedirectCallback: vi.fn(),
+    error: undefined, 
+  });
+};

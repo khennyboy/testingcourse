@@ -41,6 +41,7 @@ describe('ProductList', () => {
     server.use(http.get('/products', () => HttpResponse.error()));
     
     render(<ProductList />, { wrapper: AllProviders });
+    screen.debug()
 
     expect(await screen.findByText(/error/i)).toBeInTheDocument();
   });
