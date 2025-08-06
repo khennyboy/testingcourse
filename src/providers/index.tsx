@@ -10,6 +10,7 @@ const Providers = ({ children }: PropsWithChildren) => {
   
   return (
     <AuthProvider>
+      <h1>Hello</h1>
       <ReactQueryProvider>
           <CartProvider>
             <LanguageProvider language="en">
