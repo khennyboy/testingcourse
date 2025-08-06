@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const productFormSchema = z.object({
-  id: z.number().optional(),
+  id: z.number(),
   name: z
     .string()
     .trim()

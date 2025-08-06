@@ -45,8 +45,6 @@ describe("App routing", () => {
   it("renders the product detail page with mock data", async () => {
     const product = db.product.create();
     renderRoute(`/products/${product.id}`);
-
-    // Wait for the product data to be loaded
     expect(
       await screen.findByRole("heading", { name: product.name })
     ).toBeInTheDocument();
