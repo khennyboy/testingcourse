@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { Category } from "../entities";
+import type { Category } from "../entities";
 
 function CategoryList() {
   const {

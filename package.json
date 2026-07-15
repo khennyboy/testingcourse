@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch src/data/db.json",
+    "server": "json-server src/data/db.json",
     "start": "concurrently \"npm run dev\" \"npm run server\"",
     "test": "vitest",
     "test:ui": "vitest --ui"
@@ -49,6 +49,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "jsdom": "^24.1.3",
+    "msw": "^2.10.4",
     "resize-observer-polyfill": "^1.5.1",
     "typescript": "^5.8.3",
     "vite": "^6.2.0",

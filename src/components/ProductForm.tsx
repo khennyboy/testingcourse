@@ -4,14 +4,16 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useCategories from "../hooks/useCategories";
-import { productFormSchema, type ProductFormData } from "../validationSchemas/productSchema";
+import {
+  productFormSchema,
+  type ProductFormData,
+} from "../validationSchemas/productSchema";
 import ErrorMessage from "./ErrorMessage";
 import type { Product } from "../entities";
 
-
 interface Props {
   product?: Product;
-  onSubmit: (product: ProductFormData) => Promise<void>;
+  onSubmit?: (product: ProductFormData) => Promise<void>;
 }
 
 const ProductForm = ({ product, onSubmit }: Props) => {
@@ -34,6 +36,7 @@ const ProductForm = ({ product, onSubmit }: Props) => {
     <form
       name="product"
       onSubmit={handleSubmit(async (formData) => {
+        if (!onSubmit) return;
         try {
           setSubmitting(true);
           await onSubmit(formData);
